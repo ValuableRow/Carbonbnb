@@ -1,6 +1,16 @@
 require 'faker'
 
-puts "creating flats & users"
+puts "dropping database entries"
+
+Booking.destroy_all
+Flat.destroy_all
+User.destroy_all
+
+
+
+puts "creating flats & users &bookinh &reviews"
+
+
 
 50.times do
   user = User.new(
