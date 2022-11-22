@@ -20,6 +20,23 @@
   transition: background 0.3s ease;
 }
 
+.btn-secondary {
+  color: #670BFF;
+  border-color: #670BFF;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: white;
+  transition: background 0.3s ease;
+
+}
+
+.btn-secondary:hover {
+  background-color: #fff;
+  font-weight: 600;
+  color:#670BFF;
+    }
+
+
 .btn-flat:hover {
   background: #4D04C4;
   color: white;
