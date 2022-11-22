@@ -16,3 +16,9 @@
   height: 50vh;
   max-height: 400px;
 }
+
+.card-img-top {
+  object-fit: cover;
+  object-position: center;
+  height: 20vh;
+}
