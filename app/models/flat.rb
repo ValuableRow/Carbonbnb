@@ -1,10 +1,12 @@
 class Flat < ApplicationRecord
   belongs_to :user
   has_many :bookings
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :photos, presence: true
-  validates :location, presence: true
-  validates :capacity, presence: true
-  validates :price_per_night, presence: true
+  has_many :ratings, through: :bookings
+
+  def average_rating
+    unless ratings.empty?
+      flat_ratings = ratings.map { |rating| rating.rating }
+      flat_ratings.sum.to_f / flat_ratings.count
+    end
+  end
 end
