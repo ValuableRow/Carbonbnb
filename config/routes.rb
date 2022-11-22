@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # As a visitor I can browse offers...
-  resources :flats [:index, :show]
+  # As a visitor I can browse through flats
+  resources :flats, only: :index
 end

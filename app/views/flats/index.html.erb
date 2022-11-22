@@ -1,0 +1,22 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h1>Sort by:</h1>
+    <button type="button" class="btn btn-secondary">Location</button>
+    <button type="button" class="btn btn-secondary">Capacity</button>
+    <button type="button" class="btn btn-secondary">Rating</button>
+  </div>
+</div>
+
+  <div class="container py-5">
+    <div class="row">
+      <% @flats.each do |flat| %>
+          <div class="co-12 col-sm-6 col-md-4 mb-3">
+            <%= link_to flat_path(flat), class:"text-decoration-none" do %>
+              <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/app/assets/images/card-example.jpg')">
+                <%= flat.name %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
