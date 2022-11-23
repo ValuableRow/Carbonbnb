@@ -11,7 +11,6 @@ User.destroy_all
 puts "creating flats & users &bookinh &reviews"
 
 
-
 50.times do
   user = User.new(
     email: Faker::Internet.email,
