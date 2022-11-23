@@ -27,11 +27,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "put in image url ofphotos" }%>
   </div>
-  <div class="form-actions" >
-    <div class="btn-flats_sign_up">
-      <%= f.button :submit, "Create a flat" %>
-    </div>
-  </div>
+
+    <%= f.submit "Create a flat", class: "btn btn-flat" %>
   <% end %>
 
 </div>

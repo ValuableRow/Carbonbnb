@@ -24,7 +24,6 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     @flat.save!
-    raise
     redirect_to flat_path(@flat)
   end
 

@@ -12,9 +12,6 @@
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
     <%= f.input :name,
                 required: true,
                 input_html: { autocomplete: "name" } %>
@@ -24,10 +21,13 @@
     <%= f.input :location,
                 required: true,
                 input_html: { autocomplete: "location" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions" >
-   <%= f.button :submit, "Sign up", class:"btn btn-flat" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-flat" %>
   </div>
 <% end %>
 
