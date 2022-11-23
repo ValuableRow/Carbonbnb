@@ -13,6 +13,7 @@
   <body class="d-flex flex-column min-vh-100">
 
   <!--NAVBAR -->
+  <%= render "devise/shared/flashes" %>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Logo</a>
@@ -21,9 +22,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <%if user_signed_in?  %>
           <li class="nav-item">
-            <%= link_to "Become a host", new_user_registration_path, class: "btn btn-secondary" %>
+            <%= link_to "Become a host", new_flat_path, class: "btn btn-secondary" %>
           </li>
+          <%end  %>
         </ul>
         <form class="d-flex" id="navsearch" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -34,7 +37,6 @@
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </div>
@@ -62,8 +64,5 @@
         Made with <i class="fas fa-heart"></i> at Le Wagon
     </div>
   </div>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>

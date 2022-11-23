@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # As a visitor I can browse through flats
-  resources :flats, only: [:index, :show] do
+  resources :flats, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:create]
   end
+
 end
