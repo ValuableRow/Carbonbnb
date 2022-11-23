@@ -9,13 +9,25 @@
     </div>
   </div>
 
-  <div class="container" style="margin-top: 12px">
-    <h2>Flat description</h2>
-    <p><%= @flat.description %></p>
-  </div>
 
+    <div class="container" style="margin-top: 12px">
+      <div class="d-flex">
+        <div class="description-card">
+          <h2>Flats description</h2>
+          <p><%= @flat.description %></p>
+        </div>
+        <div class="booking-card">
+          <h2>Booking:</h2>
+          <%= simple_form_for [@flat, @booking] do |f| %>
+            <%= f.input :start_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
+            <%= f.input :end_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
+            <%= f.submit "Reserve", class: "btn btn-flat" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <div class="container">
-     <%@flat.ratings.each do |rating| %>
+     <% @flat.ratings.each do |rating| %>
       <div class="rating-card">
         <p class="mb-0"><i class="fa-regular fa-star"></i> <%= rating.rating %></p>
         <p class="mb-0"><%= rating.comment %></p>
