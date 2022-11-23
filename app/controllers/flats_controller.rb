@@ -1,5 +1,4 @@
 class FlatsController < ApplicationController
-
   def index
     @flats = Flat.all
     if params[:sort] == "rating"
@@ -10,5 +9,9 @@ class FlatsController < ApplicationController
     elsif params[:sort] == "price"
       @flats = @flats.sort_by { |flat| flat.price_per_night }
     end
+  end
+
+  def show
+    @flat = Flat.find(params[:id])
   end
 end

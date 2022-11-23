@@ -1,8 +1,7 @@
+<div class= "container">
 <h2>Sign up</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
   data: {turbo: false}) do |f| %>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :email,
@@ -13,14 +12,26 @@
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                required: true,
+                input_html: { autocomplete: "name" } %>
+    <%= f.input :about,
+                required: true,
+                input_html: { autocomplete: "about" } %>
+    <%= f.input :location,
+                required: true,
+                input_html: { autocomplete: "location" } %>
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions" >
+    <div class="btn-flats_sign_up">
     <%= f.button :submit, "Sign up" %>
+    </div>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

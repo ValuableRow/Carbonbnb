@@ -22,23 +22,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Community</a>
+            <%= link_to "Become a host", new_user_registration_path, class: "btn btn-secondary" %>
           </li>
         </ul>
         <form class="d-flex" id="navsearch" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
-        <div class="d-grid gap-2 d-md-block">
-          <button type="button" class="btn btn-outline-secondary">Sign in</button>
-          <button type="button" class="btn btn-secondary">Sign up</button>
+        <% if user_signed_in? %>
+          <div class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </div>
+        <% else %><div class="d-grid gap-2 d-md-block">
+          <%= link_to "Login", new_user_session_path, class: "btn btn-secondary" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-flat" %>
         </div>
+        <% end %>
       </div>
     </div>
   </nav>
