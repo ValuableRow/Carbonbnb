@@ -14,4 +14,22 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
   end
+
+  def new
+    @flat = Flat.new
+  end
+
+  def create
+    @flat = Flat.new(flat_params)
+    @flat.user = current_user
+    @flat.save!
+    raise
+    redirect_to flat_path(@flat)
+  end
+
+  private
+  def flat_params
+    params.require(:flat).permit(:name, :description, :price_per_night, :photos, :location, :capacity)
+  end
+
 end
