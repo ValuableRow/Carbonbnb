@@ -29,3 +29,20 @@
   object-position: center;
   height: 20vh;
 }
+
+.description-card {
+  flex-basis: 70rem;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin-bottom: 24px;
+  margin-right: 24px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.booking-card {
+  flex-basis: 30rem;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin-bottom: 24px;
+  padding: 8px;
+  border-radius: 8px;
+}
