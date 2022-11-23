@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Create your flat</h2>
+  <div class="form-inputs">
+    <%= simple_form_for(@flat) do |f| %>
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "name" }%>
+    <%= f.input :description,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "description" }%>
+    <%= f.input :price_per_night,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "price_per_night" }%>
+    <%= f.input :location,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "location" }%>
+    <%= f.input :capacity,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "capacity" }%>
+    <%= f.input :photos,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "put in image url ofphotos" }%>
+  </div>
+  <div class="form-actions" >
+    <div class="btn-flats_sign_up">
+      <%= f.button :submit, "Create a flat" %>
+    </div>
+  </div>
+  <% end %>
+
+</div>
