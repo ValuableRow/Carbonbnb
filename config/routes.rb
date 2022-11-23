@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # As a visitor I can visit the home page
   root to: "pages#home"
-  resources :flats
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # As a visitor I can browse through flats
   resources :flats, only: [:index, :show]
+  
+  resources :users, only: [:show] do
+     resources :bookings, only: [:index]
+  end
+
 end

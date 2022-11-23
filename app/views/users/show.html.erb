@@ -1,0 +1,42 @@
+
+  <div class="container" style="margin-top: 12px">
+    <h1><%= @user.name%></h1>
+    <h2>My role is: <%= @role%></h2>  
+  </div>
+
+  <!--CARDS -->
+  <%# <%= render partial: "/shared/bookingcard" %>
+  
+  <div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!--CARD ITERATION -->
+    <% @user.bookings.each do |booking| %>
+      <div class="col">
+        <div class="card h-100">
+          <%= image_tag booking.flat.photos, class: "card-img-top", alt: "flat picture" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to booking.flat.name, flat_path(booking.flat) %></h5>
+            <p class="card-text text-truncate"><%= booking.flat.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= booking.flat.location %></li>
+            <li class="list-group-item d-flex justify-content-between">
+              <p><%= "#{booking.flat.price_per_night} €" %></p>
+              <p><%= booking.flat.average_rating %></p>
+            </li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Booking confirmed: <%= booking.confirmed  ? 'yes' : 'no' %></li>
+            <li class="list-group-item d-flex justify-content-between">
+              <p>Total: <%= "#{booking.total_price} €" %></p>
+              <p>von <%= booking.start_date %></p>
+              <p>bis<%= booking.end_date %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- end of file -->
