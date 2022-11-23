@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
 
   <!--NAVBAR -->
   <nav class="navbar navbar-expand-lg bg-light">
@@ -47,7 +47,10 @@
     </div>
   </nav>
 
+  <!--YIELD -->
+  <div class="flex-grow-1">
     <%= yield %>
+  </div>
 
   <!--FOOTER -->
   <div class="footer">
@@ -56,7 +59,7 @@
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
       <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+        Made with <i class="fas fa-heart"></i> at Le Wagon
     </div>
   </div>
 
