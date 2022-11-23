@@ -30,6 +30,13 @@
   height: 20vh;
 }
 
+
+.card-title a {
+  text-decoration: none;
+  color: #670BFF;
+  font-weight: bold;
+  }
+
 .description-card {
   flex-basis: 70rem;
   border: 1px solid rgba(0,0,0,0.2);
@@ -45,4 +52,5 @@
   margin-bottom: 24px;
   padding: 8px;
   border-radius: 8px;
+
 }

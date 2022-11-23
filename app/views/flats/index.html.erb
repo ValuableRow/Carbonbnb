@@ -2,8 +2,8 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center">
     <h1>Sort by:</h1>
-    <button type="button" class="btn btn-secondary text-decoration-none"><%= link_to "Rating", flats_path(sort: "rating") %></button>
-    <button type="button" class="btn btn-secondary"><%= link_to "Price", flats_path(sort: "price") %></button>
+    <%= link_to "Rating", flats_path(sort: "rating"), class: "btn btn-secondary"%>
+    <%= link_to "Price", flats_path(sort: "price"), class: "btn btn-secondary"%>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
             <li class="list-group-item"><%= flat.location %></li>
             <li class="list-group-item d-flex justify-content-between">
               <p><%= "#{flat.price_per_night} €" %></p>
-              <p><%= flat.average_rating %></p>
+              <p><i class="fa-regular fa-star"> <%= flat.average_rating %></i></p>
             </li>
           </ul>
         </div>
