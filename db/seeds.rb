@@ -44,6 +44,7 @@ end
     photos: "https://source.unsplash.com/collection/1134892/",
     location: Faker::Address.full_address,
     capacity: rand(2..15),
+    carbon_footprint: rand(10..50),
     user: User.where(host: true).sample
   )
   flat.save!
