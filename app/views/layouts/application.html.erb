@@ -30,10 +30,16 @@
           </li>
           <%end  %>
         </ul>
-        <form class="d-flex" id="navsearch" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </form>
+
+          <%= form_with url: flats_path, method: :get, class: "d-flex", id: "navsearch" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control me-2",
+              placeholder: "Find a flat"
+            %>
+            <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+          <% end %>
+
         <% if user_signed_in? %>
           <div class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
