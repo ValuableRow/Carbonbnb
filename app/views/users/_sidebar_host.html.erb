@@ -1,0 +1,27 @@
+
+<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Host Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="host_menu">
+                    <li>
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                    </li>
+                    <li>
+                        <a href="#submenu22" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">My orders</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu22" data-bs-parent="#host_menu">
+                            <li class="w-100">
+                                 <a href="<%= user_path(@user, redir_param: 21)%>" class="nav-link px-0"> <span class="d-none d-sm-inline">current orders</span></a>
+                            </li>
+                            <li>
+                                 <a href="<%= user_path(@user, redir_param: 22)%>" class="nav-link px-0"> <span class="d-none d-sm-inline">completed orders</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">My stats</span> </a>
+                    </li>
+                </ul>
+                <hr>
