@@ -1,6 +1,9 @@
 class FlatsController < ApplicationController
   def index
     @flats = Flat.all
+    if params[:query].present?
+      @flats = Flat.global_search(params[:query])
+    end
     if params[:sort] == "rating"
       flats_with_ratings = @flats.select { |flat| flat.average_rating }
       flats_without_ratings = @flats.select { |flat| !flat.average_rating }
