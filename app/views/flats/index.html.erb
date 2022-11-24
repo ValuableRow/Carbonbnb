@@ -25,7 +25,8 @@
             <li class="list-group-item"><%= flat.location %></li>
             <li class="list-group-item d-flex justify-content-between">
               <p><%= "#{flat.price_per_night} €" %></p>
-              <p><i class="fa-regular fa-star"> <%= flat.average_rating %></i></p>
+              <p> Capacity: <%= flat.capacity %> </p>
+              <p><i class="fa-regular fa-star"></i><%= flat.average_rating %> (<%= flat.ratings.count%>)</p>
             </li>
           </ul>
         </div>
