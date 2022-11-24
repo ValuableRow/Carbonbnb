@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Create your flat</h2>
   <div class="form-inputs">
-    <%= simple_form_for(@flat) do |f| %>
+    <%= simple_form_for(Flat.new) do |f| %>
     <%= f.input :name,
                 required: true,
                 autofocus: true,

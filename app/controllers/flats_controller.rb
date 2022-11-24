@@ -17,7 +17,7 @@ class FlatsController < ApplicationController
   end
 
   def new
-    @flat = Flat.new
+    # @flat = Flat.new
   end
 
   def create
