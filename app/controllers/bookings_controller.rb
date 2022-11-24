@@ -25,6 +25,6 @@ class BookingsController < ApplicationController
     )
 
     @booking.save
-    redirect_to root_path, notice: "Booking completed"
+    redirect_to flat_path(flat), notice: "Booking completed"
   end
 end
