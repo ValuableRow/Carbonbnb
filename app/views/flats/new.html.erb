@@ -1,32 +1,30 @@
 <div class="container">
   <h2>Create your flat</h2>
-  <div class="form-inputs">
-    <%= simple_form_for(Flat.new) do |f| %>
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
-    <%= f.input :description,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "description" }%>
-    <%= f.input :price_per_night,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "price_per_night" }%>
-    <%= f.input :location,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "location" }%>
-    <%= f.input :capacity,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "capacity" }%>
-    <%= f.input :photos,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "put in image url ofphotos" }%>
-  </div>
+  <%= simple_form_for(@flat) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :description,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "description" }%>
+      <%= f.input :price_per_night,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "price_per_night" }%>
+      <%= f.input :location,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "location" }%>
+      <%= f.input :capacity,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "capacity" }%>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+    </div>
 
     <%= f.submit "Create a flat", class: "btn btn-flat" %>
   <% end %>
