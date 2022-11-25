@@ -1,95 +1,102 @@
-
+<div data-controller="jump-to-map">
   <div class="container d-flex flex-row align-items-center" style="margin-top: 12px">
     <div><h1><%= @flat.user.name%>: <%= @flat.name%></h1></div>
     <div class="p-1"><%= '<i class="fa-solid fa-leaf"></i>'.html_safe * @flat.leaf_count %></div>
   </div>
   <div class="container">
-    <p> <i class="fa-regular fa-star"></i> <%= @flat.average_rating %> (<%= @flat.ratings.count%>) | Capacity: <%= @flat.capacity %> | <%= @flat.location%></p>
+    <p>
+      <i class="fa-regular fa-star"></i> <%= @flat.average_rating&.truncate(1) %> (<%= @flat.ratings.count%>) | Capacity: <%= @flat.capacity %> |
+      <span data-action="click->jump-to-map#scroll"><%= @flat.location%></span>
+    </p>
   </div>
-  <div class="container image-container"   >
-      <% @flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+  <div class="container image-container">
+    <% @flat.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
 
 <!-- BOOKING Card -->
-    <div class="container" style="margin-top: 12px">
-      <div class="d-flex">
-        <div class="description-card">
-          <h2>Description</h2>
-          <p><%= @flat.description %></p>
-        </div>
-        <div class="booking-card">
-          <h2>Booking</h2>
-          <%= simple_form_for [@flat, @booking] do |f| %>
-            <%= f.input :start_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
-            <%= f.input :end_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
-            <%= f.submit "Reserve", class: "btn btn-flat" %>
-          <% end %>
-        </div>
+  <div class="container" style="margin-top: 12px">
+    <div class="d-flex">
+      <div class="description-card">
+        <h2>Description</h2>
+        <p><%= @flat.description %></p>
+      </div>
+      <div class="booking-card">
+        <h2>Booking</h2>
+        <%= simple_form_for [@flat, @booking] do |f| %>
+          <%= f.input :start_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
+          <%= f.input :end_date, as: :date, start_year: Date.today.year, end_year: Date.today.year + 1 %>
+          <%= f.submit "Reserve", class: "btn btn-flat" %>
+        <% end %>
       </div>
     </div>
+  </div>
 
 <!-- RATING CARD -->
 
-  <div class="container">
+  <div class="container bg-f4f4f4">
     <div class="rating-card">
       <h3>Ratings</h3>
       <% if @flat.ratings.present? %>
-          <% @flat.ratings.each do |rating| %>
-            <div class="bg-white rounded p-3">
-              <p class="mb-0"><i class="fa-regular fa-star"></i> <%= rating.rating %></p>
-              <p class="mb-0"><%= rating.comment %></p>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="bg-white rounded p-3">
-            <p><%= "There are no ratings yet. Book this flat to add your rating "%><i class="fa-regular fa-face-grin-wink"></i></p>
+        <% @flat.ratings.each do |rating| %>
+          <div class="bg-f4f4f4 rounded p-3 border 10px ">
+            <p class="mb-0"><i class="fa-regular fa-star"></i> <%= rating.rating&.truncate(1) %></p>
+            <p class="mb-0"><%= rating.comment %></p>
           </div>
+        <% end %>
+      <% else %>
+        <div class="bg-f4f4f4 rounded p-3  ">
+          <p><%= "There are no ratings yet. Book this flat to add your rating "%><i class="fa-regular fa-face-grin-wink"></i></p>
+        </div>
       <% end %>
     </div>
   </div>
 
 <!-- if current_user has a booking_id through this flat && the date is in the past, then show possibility to add ratings, else show nothing -->
-<% if @past_bookings.present? %>
-  <div class="container">
+  <% if @past_bookings.present? %>
     <div class="container">
-      <div class="col-12">
-        <% @past_bookings.each do |booking| %>
-          <div class="container">
-            <div class="col-12 bg-white rounded p-3">
-              <i class="fa-solid fa-circle-info"></i><%= " You have stayed here from #{booking.start_date.strftime("%dth of %B, %Y")} to #{booking.end_date.strftime("%dth of %B, %Y")}." %>
-              <div class="bg-white rounded p-3">
-                <div class="accordion" id="accordionRating">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Add your rating
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRating">
-                      <div class="accordion-body">
-                        <%= simple_form_for [booking, @rating] do |f| %>
-                          <h5><%= f.input :comment, placeholder: "Add your comment here..." %></h5>
-                          <h5><%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating?", input_html: { data: { controller: "star-rating" } } %></h5>
-                          <%= f.submit class:"btn btn-flat" %>
-                        <% end %>
+      <div class="container">
+        <div class="col-12">
+          <% @past_bookings.each do |booking| %>
+            <div class="container">
+              <div class="col-12 bg-white rounded p-3">
+                <i class="fa-solid fa-circle-info"></i><%= " You have stayed here from #{booking.start_date.strftime("%dth of %B, %Y")} to #{booking.end_date.strftime("%dth of %B, %Y")}." %>
+                <div class="bg-white rounded p-3">
+                  <div class="accordion" id="accordionRating">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Add your rating
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRating">
+                        <div class="accordion-body">
+                          <%= simple_form_for [booking, @rating] do |f| %>
+                            <h5><%= f.input :comment, placeholder: "Add your comment here..." %></h5>
+                            <h5><%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating?", input_html: { data: { controller: "star-rating" } } %></h5>
+                            <%= f.submit class:"btn btn-flat" %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 <!-- GEOCODING -->
-  <div style="width: 90%; height: 300px; margin-left: 75px" class="rating-card"
-  data-controller="map"
-  data-map-markers-value="<%= @marker.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div data-jump-to-map-target="map" class="container">
+    <div style="width: 100%; height: 300px" class="rating-card"
+    data-controller="map"
+    data-map-markers-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 <!-- end of file -->
+</div>
