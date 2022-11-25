@@ -14,12 +14,14 @@ class FlatsController < ApplicationController
     end
   end
 
+
   def show
     @flat = Flat.find(params[:id])
     @rating = Rating.new
     @booking = Booking.new
     @bookings_with_reviews = Booking.joins(:rating)
     @past_bookings = @flat.bookings.where(user: current_user, end_date: ..1.day.ago) - @bookings_with_reviews
+    @marker = [{ lat: @flat.latitude, lng: @flat.longitude }]
   end
 
   def new
