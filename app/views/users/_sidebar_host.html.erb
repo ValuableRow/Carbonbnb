@@ -1,0 +1,33 @@
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Host Menu</span>
+             </a>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">My stats</span>
+      </button>
+    </h2>
+    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          <a id="link_51" class="btn btn-secondary container-fluid" href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <span class="ms-1 d-none d-sm-inline">Stats Host</span>
+          </a>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">My orders</span>
+      </button>
+    </h2>
+    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+         <a id="link_61" class="btn btn-secondary container-fluid" href="<%= user_path(@user, redir_param: 61, accord_param: "flush-headingSix")%>" class="nav-link px-0">
+          <span class="d-none d-sm-inline">current</span></a>
+          <a id="link_62" class="btn btn-secondary container-fluid" href="<%= user_path(@user, redir_param: 62, accord_param: "flush-headingSix")%>" class="nav-link px-0">
+          <span class="d-none d-sm-inline">completed</span></a>
+      </div>
+    </div>
+  </div>
+<hr>
