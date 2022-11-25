@@ -4,7 +4,7 @@
     <div class="p-1"><%= '<i class="fa-solid fa-leaf"></i>'.html_safe * @flat.leaf_count %></div>
   </div>
   <div class="container">
-    <p> <i class="fa-regular fa-star"></i> <%= @flat.average_rating %> (<%= @flat.ratings.count%>) | Capacity: <%= @flat.capacity %> | <%= @flat.location%></p>
+    <p> <i class="fa-regular fa-star"></i> <%= @flat.average_rating&.truncate(1) %> (<%= @flat.ratings.count%>) | Capacity: <%= @flat.capacity %> | <%= @flat.location%></p>
   </div>
   <div class="container image-container"   >
       <% @flat.photos.each do |photo| %>
@@ -38,7 +38,7 @@
       <% if @flat.ratings.present? %>
           <% @flat.ratings.each do |rating| %>
             <div class="bg-white rounded p-3">
-              <p class="mb-0"><i class="fa-regular fa-star"></i> <%= rating.rating %></p>
+              <p class="mb-0"><i class="fa-regular fa-star"></i> <%= rating.rating&.truncate(1) %></p>
               <p class="mb-0"><%= rating.comment %></p>
             </div>
           <% end %>
