@@ -30,8 +30,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @user = @booking.user
-    @role = role(@booking.user)
+    @user = current_user
+    @role = role(@user)
     @redir = params[:redir_param].nil? ? 0 : params[:redir_param].to_i
   end
 
