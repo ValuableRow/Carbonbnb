@@ -1,7 +1,12 @@
 <div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/1440×1024/?house);">
   <div class="container">
-    <h1>Carbonbnb lets <strong>you</strong> find<strong> great accomodations </strong>near you!</h1>
-    <p>Across the street from the ordinary.</p>
+    <h1>Carbonbnb helps you find great flats with minimal carbon footprint during your trips</h1>
+    <p>Give back to mother earth while on the road</p>
     <%= link_to "Browse flats", "/flats", class: "btn btn-flat" %>
   </div>
+</div>
+
+<div class="container">
+    <h3 class="mb-4 mt-4">Our flats with the best carbon footprint</h3>
+    <%= render 'flats/top-cb', flats_with_best_carbon_footprint: @flats_with_best_carbon_footprint %>
 </div>
