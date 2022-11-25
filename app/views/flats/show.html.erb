@@ -6,9 +6,10 @@
   <div class="container">
     <p> <i class="fa-regular fa-star"></i> <%= @flat.average_rating %> (<%= @flat.ratings.count%>) | Capacity: <%= @flat.capacity %> | <%= @flat.location%></p>
   </div>
-  <div class="container">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @flat.photos %>);">
-    </div>
+  <div class="container image-container"   >
+      <% @flat.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
   </div>
 
 <!-- BOOKING Card -->

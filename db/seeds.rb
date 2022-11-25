@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 
 puts "dropping database entries"
 
@@ -8,7 +9,8 @@ User.destroy_all
 
 puts "creating flats(& their carbon footprint), users, bookings, reviews"
 
-50.times do
+5.times do |i|
+  file = URI.open("https://source.unsplash.com/collection/43146398/")
   user = User.new(
     email: Faker::Internet.email,
     password: "password",
@@ -17,10 +19,12 @@ puts "creating flats(& their carbon footprint), users, bookings, reviews"
     about: Faker::Creature::Dog.meme_phrase,
     location: Faker::Address.full_address
   )
+  user.photo.attach(io: file, filename: "user_#{i}_0.jpeg", content_type: "image/jpeg")
   user.save!
 end
 
-20.times do
+10.times do |i|
+  file = URI.open("https://source.unsplash.com/collection/1340430/")
   user = User.new(
     email: Faker::Internet.email,
     password: "password",
@@ -29,20 +33,24 @@ end
     about: Faker::Creature::Dog.meme_phrase,
     location: Faker::Address.full_address
   )
+  user.photo.attach(io: file, filename: "user_#{i}_0.jpeg", content_type: "image/jpeg")
   user.save!
 end
 
-50.times do
+5.times do |i|
+  file = URI.open("https://source.unsplash.com/collection/1134892/")
+  file_2 = URI.open("https://source.unsplash.com/collection/1868256/")
   flat = Flat.new(
     name: Faker::Mountain.range,
     description: Faker::Restaurant.description,
     price_per_night: rand(50..300),
-    photos: "https://source.unsplash.com/collection/1134892/",
     location: Faker::Address.full_address,
     capacity: rand(2..15),
     carbon_footprint: rand(10..70),
     user: User.where(host: true).sample
   )
+  flat.photos.attach(io: file, filename: "flat_#{i}_0.jpeg", content_type: "image/jpeg")
+  flat.photos.attach(io: file_2, filename: "flat_#{i}_1.jpeg", content_type: "image/jpeg")
   flat.save!
 end
 

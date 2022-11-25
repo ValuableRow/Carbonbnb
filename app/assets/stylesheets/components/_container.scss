@@ -1,0 +1,25 @@
+.image-container {
+  width: 100%;
+  display:flex;
+
+
+}
+
+.image-container img {
+  flex-grow: 1;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.image-container img:first-child {
+  margin-right: 8px;
+  border-radius: 8px 0 0 8px;
+
+}
+
+.image-container img:last-child {
+  margin-left: 8px;
+  border-radius: 0 8px 8px 0;
+
+}
