@@ -5,6 +5,7 @@
     <!--CARD ITERATION -->
     <% @bookings_historic.each do |booking| %>
       <div class="col">
+        <a id="link_22"  href="<%= user_path(@booking, redir_param: 22, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
         <div class="card h-100">
           <%= image_tag booking.flat.photos, class: "card-img-top", alt: "flat picture" %>
           <div class="card-body">
