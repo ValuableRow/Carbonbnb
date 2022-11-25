@@ -2,8 +2,8 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center">
     <h1>Sort by:</h1>
-    <button type="button" class="btn btn-secondary text-decoration-none"><%= link_to "Rating", flats_path(sort: "rating") %></button>
-    <button type="button" class="btn btn-secondary"><%= link_to "Price", flats_path(sort: "price") %></button>
+    <%= link_to "Rating", flats_path(sort: "rating"), class: "btn btn-secondary"%>
+    <%= link_to "Price", flats_path(sort: "price"), class: "btn btn-secondary"%>
   </div>
 </div>
 
@@ -16,16 +16,20 @@
     <% @flats.each do |flat| %>
       <div class="col">
         <div class="card h-100">
-          <%= image_tag flat.photos, class: "card-img-top", alt: "flat picture" %>
+          <%= cl_image_tag flat.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top", alt: "flat picture" %>
           <div class="card-body">
-            <h5 class="card-title"><%= link_to flat.name, flat_path(flat) %></h5>
+            <div class="d-flex">
+              <h5 class="card-title align-items-center"><%= link_to flat.name, flat_path(flat) %></h5>
+              <div class="leaves_index align-items-center"><%= '<i class="fa-solid fa-leaf"></i>'.html_safe * flat.leaf_count %></div>
+            </div>
             <p class="card-text text-truncate"><%= flat.description %></p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><%= flat.location %></li>
             <li class="list-group-item d-flex justify-content-between">
               <p><%= "#{flat.price_per_night} €" %></p>
-              <p><%= flat.average_rating %></p>
+              <p> Capacity: <%= flat.capacity %> </p>
+              <p><i class="fa-regular fa-star"></i><%= flat.average_rating.truncate(1) %> (<%= flat.ratings.count%>)</p>
             </li>
           </ul>
         </div>

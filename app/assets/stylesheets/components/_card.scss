@@ -1,5 +1,5 @@
 .rating-card {
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0,0,0,0.2);
   margin-bottom: 24px;
   padding: 8px;
   border-radius: 8px;
@@ -28,4 +28,28 @@
   object-fit: cover;
   object-position: center;
   height: 20vh;
+}
+
+
+.card-title a {
+  text-decoration: none;
+  color: #670BFF;
+  font-weight: bold;
+  }
+
+.description-card {
+  flex-basis: 70rem;
+  border: 2px solid #23242424;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.booking-card {
+  flex-basis: 30rem;
+  border: 2px solid rgba(0,0,0,0.2);
+  margin-bottom: 24px;
+  padding: 8px;
+  border-radius: 8px;
 }
