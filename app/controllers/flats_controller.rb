@@ -9,11 +9,14 @@ class FlatsController < ApplicationController
       flats_without_ratings = @flats.select { |flat| !flat.average_rating }
       flats_with_ratings = flats_with_ratings.sort_by { |flat| -flat.average_rating }
       @flats = flats_with_ratings + flats_without_ratings
-    elsif params[:sort] == "price"
+    elsif params[:sort] == "price_asc"
       @flats = @flats.sort_by { |flat| flat.price_per_night }
+    elsif params[:sort] == "price_desc"
+      @flats = @flats.sort_by { |flat| flat.price_per_night }.reverse
+    elsif params[:sort] == "carbon_footprint"
+      @flats = @flats.sort_by { |flat| flat.carbon_footprint }
     end
   end
-
 
   def show
     @flat = Flat.find(params[:id])

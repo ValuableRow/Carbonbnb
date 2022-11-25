@@ -1,18 +1,8 @@
-<!--SORTING BUTTONS -->
-<div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center">
-    <h2>Sort by:</h2>
-    <%= link_to "Rating", flats_path(sort: "rating"), class: "btn btn-secondary"%>
-    <%= link_to "Price #{sort_arrow(params[:sort])}".html_safe, flats_path(sort: params[:sort] == "price_asc" ? "price_desc" : "price_asc"), class: "btn btn-secondary"%>
-    <%= link_to "Carbon Footprint", flats_path(sort: "carbon_footprint"), class: "btn btn-secondary"%>
-  </div>
-</div>
-
 <!--CARDS -->
 <div class="container">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
-    <% @flats.each do |flat| %>
+    <% flats_with_best_carbon_footprint.each do |flat| %>
       <div class="col">
         <div class="card h-100">
           <%= cl_image_tag flat.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top", alt: "flat picture" %>
