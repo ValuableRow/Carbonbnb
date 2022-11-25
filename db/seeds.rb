@@ -37,14 +37,19 @@ end
   user.save!
 end
 
-10.times do |i|
+
+full_address = ["Ansgarstr. 4 Wallenhorst 49134", "Ochsenweg 54 Melle 49324", "Woldpromenade 194 Steenwijk Overijssel(OV) 8331 JH", "Burgunderstr. 8 Singen 75196",
+  "Antwerpener Str. 47 Berlin 13353", "Lilienthalstr. 5 Gelsenkirchen 45883", " Dammkuhlenweg 1 Glandorf 49219",
+  "Atjehstraat 11 Den Haag Zuid-Holland(ZH) 2585 VK","Hobolaan 145 Nieuwegein Utrecht(UT) 3438 RV", "
+  Pereland 2 Broekland Overijssel(OV) 8107 BM", "Spechtenveld 168 Emmen, Drenthe(DR), 7827 RH", "De Zandkuil 12 IJmuiden Noord-Holland(NH) 1974 RK" ]
+15.times do |i|
   file = URI.open("https://source.unsplash.com/collection/1134892/")
   file_2 = URI.open("https://source.unsplash.com/collection/1868256/")
   flat = Flat.new(
     name: Faker::Mountain.range,
     description: Faker::Restaurant.description,
     price_per_night: rand(50..300),
-    location: Faker::Address.full_address,
+    location: full_address.sample,
     capacity: rand(2..15),
     carbon_footprint: rand(10..70),
     user: User.where(host: true).sample
@@ -53,6 +58,7 @@ end
   flat.photos.attach(io: file_2, filename: "flat_#{i}_1.jpeg", content_type: "image/jpeg")
   flat.save!
 end
+
 
 50.times do
   start_date = Faker::Date.in_date_period
