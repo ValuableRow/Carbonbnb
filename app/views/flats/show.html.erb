@@ -28,6 +28,7 @@
     </div>
 
 <!-- RATING CARD -->
+
   <div class="container">
     <div class="rating-card">
       <h3>Ratings</h3>
@@ -45,12 +46,6 @@
       <% end %>
     </div>
   </div>
-
-<!-- GEOCODING -->
-  <div style="width: 90%; height: 300px; margin-left: 75px" class="rating-card"
-  data-controller="map"
-  data-map-markers-value="<%= @marker.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <!-- if current_user has a booking_id through this flat && the date is in the past, then show possibility to add ratings, else show nothing -->
 <% if @past_bookings.present? %>
@@ -88,4 +83,10 @@
     </div>
   </div>
 <% end %>
+
+<!-- GEOCODING -->
+  <div style="width: 90%; height: 300px; margin-left: 75px" class="rating-card"
+  data-controller="map"
+  data-map-markers-value="<%= @marker.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 <!-- end of file -->
