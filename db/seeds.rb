@@ -37,7 +37,7 @@ end
   user.save!
 end
 
-5.times do |i|
+10.times do |i|
   file = URI.open("https://source.unsplash.com/collection/1134892/")
   file_2 = URI.open("https://source.unsplash.com/collection/1868256/")
   flat = Flat.new(

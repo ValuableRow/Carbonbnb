@@ -1,0 +1,28 @@
+<!--CARDS -->
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!--CARD ITERATION -->
+    <% flats_with_best_carbon_footprint.each do |flat| %>
+      <div class="col">
+        <div class="card h-100">
+          <%= cl_image_tag flat.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top", alt: "flat picture" %>
+          <div class="card-body">
+            <div class="d-flex">
+              <h5 class="card-title align-items-center"><%= link_to flat.name, flat_path(flat) %></h5>
+              <div class="leaves_index align-items-center"><%= '<i class="fa-solid fa-leaf"></i>'.html_safe * flat.leaf_count %></div>
+            </div>
+            <p class="card-text text-truncate"><%= flat.description %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= flat.location %></li>
+            <li class="list-group-item d-flex justify-content-between">
+              <p><%= "#{flat.price_per_night} €" %></p>
+              <p> Capacity: <%= flat.capacity %> </p>
+              <p><i class="fa-regular fa-star"></i><%= flat.average_rating&.truncate(1) %> (<%= flat.ratings.count%>)</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
