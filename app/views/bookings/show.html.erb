@@ -1,0 +1,72 @@
+ <div class="container-fluid">
+   <div class="row flex-nowrap">
+        <!--SIDEBAR -->
+     <%# Booker %>
+     <% content_for(:booker) { render partial: 'users/sidebar_booker' } %>
+     <%# Host %>
+     <% if  (@role == 'Host')%>
+     <% content_for(:host) { render partial: 'users/sidebar_host' } %>
+     <% end%>
+     <%= render  "users/navbar" %>
+     <!--CONTENT -->
+  <div class="col py-3">
+  <div class="container" style="margin-top: 12px">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <!--CARD ITERATION -->
+      <div class="col">
+          <%# Tabs %>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+             <li class="nav-item" role="presentation">
+               <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#booking" type="button" role="tab" aria-controls="booking" aria-selected="true">Your booking</button>
+            </li>
+            <li class="nav-item" role="presentation">
+               <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#hotel" type="button" role="tab" aria-controls="hotel" aria-selected="false">Your Hotel</button>
+            </li>
+            <li class="nav-item" role="presentation">
+               <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#host" type="button" role="tab" aria-controls="host" aria-selected="false">Your host</button>
+           </li>
+        </ul>
+       <div class="tab-content" id="myTabContent">
+       <div class="tab-pane fade show active" id="booking" role="tabpanel" aria-labelledby="home-tab">
+           <div class="card h-200">
+              <h5>Booking-Nr.: <%= @booking.id %></h5>
+              <div class="card-body">
+              <p>booked by: <%= @booking.user.name %></p>
+              <p>Unit: <%= @booking.flat.name %></p>
+              <p>Location: <%= @booking.flat.location %></p>
+              <p>from <%= @booking.start_date %></p>
+              <p>to <%= @booking.end_date %></p>
+              <p>nights: <%= (@booking.end_date - @booking.start_date).to_i %></p>
+              <p>Total: <%= "#{@booking.total_price} €" %></p>
+              <p>your Host: <%= @booking.flat.user.name %></p>
+              <li class="list-group-item">Booking confirmed: <%= @booking.confirmed  ? '<i class="fa-solid fa-check text-success"></i>'.html_safe : '<i class="fa-solid fa-xmark text-danger"></i>'.html_safe %></li>
+              </div>
+              </div>
+       </div>
+       <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="profile-tab">
+       <div class="card h-200">
+           <%= cl_image_tag @booking.flat.photos.first.key, class: "card-img-top", alt: "flat picture" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to @booking.flat.name, flat_path(@booking.flat) %></h5>
+             <li class="list-group-item"><%= @booking.flat.location %></li>
+            <p class="card-text"><%= @booking.flat.description %></p>
+            <div class="leaves_index align-items-center"><%= '<i class="fa-solid fa-leaf"></i>'.html_safe * @booking.flat.leaf_count %></div> 
+          </div>
+        </div>
+        </div>
+       <div class="tab-pane fade" id="host" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card h-200">
+            <h5>Your host.: <%= @booking.flat.user.name %></h5>
+            <div class="card-body">
+            <a href= "<%= @booking.flat.user.email %>"><%= @booking.flat.user.email %></a>
+            <p class="card-text"><%=  @booking.flat.user.location %></p>
+            </div>
+            </div>
+        </div>
+      </div>              
+  </div>
+</div>
+       </div>
+     </div>
+   </div>
+</div>  

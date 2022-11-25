@@ -5,8 +5,9 @@
     <!--CARD ITERATION -->
      <% @orders_current.each do |booking| %>
       <div class="col">
+      <a href="<%= booking_path( booking, redir_param: 61, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
         <div class="card h-100">
-          <%= image_tag booking.flat.photos, class: "card-img-top", alt: "flat picture" %>
+          <%= cl_image_tag booking.flat.photos.first.key, class: "card-img-top", alt: "flat picture" %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to booking.flat.name, flat_path(booking.flat) %></h5>
             <p class="card-text text-truncate"><%= booking.flat.description %></p>
@@ -27,6 +28,7 @@
             </li>
           </ul>
         </div>
+        </a>
       </div>
     <% end %>
   </div>

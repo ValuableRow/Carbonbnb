@@ -25,6 +25,19 @@ class BookingsController < ApplicationController
     )
 
     @booking.save
-    redirect_to flat_path(flat), notice: "Booking completed"
+    redirect_to user_path(current_user, redir_param: 21, accord_param: "flush-headingTwo"), notice: "Booking completed"
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @user = @booking.user
+    @role = role(@booking.user)
+    @redir = params[:redir_param].nil? ? 0 : params[:redir_param].to_i
+  end
+
+  private
+
+  def role(puser)
+    return puser.host ? "Host" : "Guest"
   end
 end
