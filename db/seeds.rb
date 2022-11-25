@@ -7,11 +7,7 @@ Booking.destroy_all
 Flat.destroy_all
 User.destroy_all
 
-
-
-puts "creating flats & users &bookinh &reviews"
-
-
+puts "creating flats(& their carbon footprint), users, bookings, reviews"
 
 5.times do |i|
   file = URI.open("https://source.unsplash.com/collection/43146398/")
@@ -50,6 +46,7 @@ end
     price_per_night: rand(50..300),
     location: Faker::Address.full_address,
     capacity: rand(2..15),
+    carbon_footprint: rand(10..70),
     user: User.where(host: true).sample
   )
   flat.photos.attach(io: file, filename: "flat_#{i}_0.jpeg", content_type: "image/jpeg")
@@ -70,7 +67,7 @@ end
     end_date: end_date,
     total_price: total_price,
     flat: flat,
-    user: User.where(host: false).sample,
+    user: User.where(host: false).sample
   )
   booking.save!
 end

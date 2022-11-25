@@ -8,6 +8,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <!-- GEOCODING -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
   </head>
 
   <body class="d-flex flex-column min-vh-100">
@@ -24,16 +27,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <%if user_signed_in?  %>
+          <%if user_signed_in?  %>
           <li class="nav-item">
             <%= link_to "Become a host", new_flat_path, class: "btn btn-secondary" %>
           </li>
           <%end  %>
         </ul>
-        <form class="d-flex" id="navsearch" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </form>
+
+          <%= form_with url: flats_path, method: :get, class: "d-flex", id: "navsearch" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control me-2",
+              placeholder: "Find a flat"
+            %>
+            <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+          <% end %>
+
         <% if user_signed_in? %>
           <div class="nav-item dropdown">
             <%= cl_image_tag current_user.photo.key, height: 40, width: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -61,6 +70,7 @@
     <div class="footer-links">
       <a id="Paul" href="https://github.com/paultilly"><i class="fab fa-github" ></i></a>
       <a id="Markus" href="https://github.com/MNicehouse"><i class="fab fa-github" ></i></a>
+      <a id="Sascha" href="https://github.com/sascha-belski"><i class="fab fa-github" ></i></a>
       <a id="Chris" href="https://github.com/ValuableRow"><i class="fab fa-github" ></i></a>
     </div>
       <div class="footer-copyright">

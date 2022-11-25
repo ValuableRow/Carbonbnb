@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   # As a visitor I can browse through flats
 
   resources :flats, only: %i[index show new create] do
-    # As a user I can create a rating of a flat
     resources :bookings, only: %i[new create]
+  end
+  # As a user I can create a rating of a flat
+  resources :bookings, only: [] do
     resources :ratings, only: :create
   end
 end
