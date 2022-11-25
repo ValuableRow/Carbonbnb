@@ -1,8 +1,11 @@
 
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light border border-white rounded">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-               <%= yield :booker %>
-               <%= yield :host %>
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                 <%= yield :booker %>
+                 <%= yield :host %>
+              </div>  
             </div>
+            <%= hidden_field_tag 'accId', params[:accord_param] || "flush-headingTwo" %>
+            <%= hidden_field_tag 'aHrefId', params[:redir_param] || "link_21" %>
         </div>
-

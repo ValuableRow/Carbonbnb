@@ -1,4 +1,6 @@
 <div class="container">
+<p>current orders:</p>
+  <% if @orders_current_exist %>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
      <% @orders_current.each do |booking| %>
@@ -28,4 +30,7 @@
       </div>
     <% end %>
   </div>
+  <% else %>
+  <p>no orders</p>
+  <% end %>
 </div>

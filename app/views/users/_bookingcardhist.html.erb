@@ -1,4 +1,6 @@
 <div class="container">
+<p>historic bookings:</p>
+  <% if @bookings_historic_exist %>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
     <% @bookings_historic.each do |booking| %>
@@ -28,4 +30,7 @@
       </div>
     <% end %>
   </div>
+    <% else %>
+    <p>no bookings</p>
+  <% end %>
 </div>

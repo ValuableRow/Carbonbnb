@@ -13,21 +13,20 @@
      <div class="col py-3">
        <%# Content area... %>
        <div class="container" style="margin-top: 12px">
-          <h1>Hello <%= @user.name%>!</h1>
+          <h1>Hello, <%= @user.name%>!</h1>
           <h2>Our dear <%= @role%></h2>  
-          <p><%= @redir%></p>
        </div>
 
        <!--CARDS -->
        <div class="container" style="margin-top: 12px">
           <% case  @redir%>
-          <% when  11%>
+          <% when  21%>
              <%= render "bookingcard" %>
-           <% when  12%>
-             <%= render "bookingcardhist" %>
-           <% when  21%>
-             <%= render "hostbookings" %>
            <% when  22%>
+             <%= render "bookingcardhist" %>
+           <% when  61%>
+             <%= render "hostbookings" %>
+           <% when  62%>
              <%= render "hostbookingshist" %>
             <% else %>
              ...
