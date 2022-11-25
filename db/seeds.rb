@@ -6,11 +6,7 @@ Booking.destroy_all
 Flat.destroy_all
 User.destroy_all
 
-
-
-puts "creating flats & users &bookinh &reviews"
-
-
+puts "creating flats(& their carbon footprint), users, bookings, reviews"
 
 50.times do
   user = User.new(
@@ -19,7 +15,7 @@ puts "creating flats & users &bookinh &reviews"
     name: Faker::Games::Pokemon.name,
     host: true,
     about: Faker::Creature::Dog.meme_phrase,
-    location: Faker::Address.full_address,
+    location: Faker::Address.full_address
   )
   user.save!
 end
@@ -31,7 +27,7 @@ end
     name: Faker::Games::Pokemon.name,
     host: false,
     about: Faker::Creature::Dog.meme_phrase,
-    location: Faker::Address.full_address,
+    location: Faker::Address.full_address
   )
   user.save!
 end
@@ -44,6 +40,7 @@ end
     photos: "https://source.unsplash.com/collection/1134892/",
     location: Faker::Address.full_address,
     capacity: rand(2..15),
+    carbon_footprint: rand(10..70),
     user: User.where(host: true).sample
   )
   flat.save!
@@ -62,7 +59,7 @@ end
     end_date: end_date,
     total_price: total_price,
     flat: flat,
-    user: User.where(host: false).sample,
+    user: User.where(host: false).sample
   )
   booking.save!
 end

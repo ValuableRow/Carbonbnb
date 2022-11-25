@@ -19,4 +19,14 @@ class Flat < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  def leaf_count
+    if carbon_footprint < 29
+      3
+    elsif carbon_footprint < 49
+      2
+    else
+      1
+    end
+  end
 end
