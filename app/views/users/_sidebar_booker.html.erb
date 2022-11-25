@@ -1,0 +1,47 @@
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Booker Menu</span>
+             </a>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          <a id="link_11" class="btn btn-secondary container-fluid" href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <span class="ms-1 d-none d-sm-inline">Dashboard Booker</span>
+          </a>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">My bookings</span></a>
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+         <a id="link_21" class="btn btn-secondary container-fluid" href="<%= user_path(@user, redir_param: 21, accord_param: "flush-headingTwo")%>" class="nav-link px-0">
+          <span class="d-none d-sm-inline">current</span></a>
+          <a id="link_22" class="btn btn-secondary container-fluid" href="<%= user_path(@user, redir_param: 22, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
+          <span class="d-none d-sm-inline">completed</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        <i class="fs-4 bi-people"></i><span class="ms-1 d-none d-sm-inline">User Info</span>
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          <a id="link_31" class="btn btn-secondary container-fluid" href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <span class="ms-1 d-none d-sm-inline">Useful info</span>
+          </a>
+      </div>
+    </div>
+  </div>
+<hr>

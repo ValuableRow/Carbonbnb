@@ -8,6 +8,7 @@ Flat.destroy_all
 User.destroy_all
 
 puts "creating flats(& their carbon footprint), users, bookings, reviews"
+puts "creating flats & users &bookinh &reviews"
 
 5.times do |i|
   file = URI.open("https://source.unsplash.com/collection/43146398/")
